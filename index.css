@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'locationFont'; /*a name to be used later*/
-    src: url('fonts/Plain\ Germanica.ttf'); /*URL to font*/
+  font-family: "locationFont"; /*a name to be used later*/
+  src: url("fonts/Plain\ Germanica.ttf"); /*URL to font*/
 }
 
 #container::-webkit-scrollbar {
@@ -22,8 +22,10 @@
   height: 100%;
 }
 
-#container-overlay {
-    display: none;
+@media only screen and (max-width: 600px) {
+  #container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -34,10 +36,25 @@
     grid-column-gap: 0px;
     width: 80%;
     height: 100%;
-    background-color: black;
-    z-index: 5;
-    opacity: 0.8;
   }
+}
+
+#container-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  overflow: auto;
+  background: black;
+  grid-row-gap: 0px;
+  grid-column-gap: 0px;
+  width: 80%;
+  height: 100%;
+  background-color: black;
+  z-index: 5;
+  opacity: 0.8;
+}
 
 .gif-container {
   width: 100%;
@@ -77,6 +94,23 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 600px) {
+  #focus-view {
+    display: none;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    overflow: auto;
+    width: 80%;
+    height: 50%;
+    position: fixed;
+    z-index: 5;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 #focus-image {
   width: 90%;
   margin: 2vw;
@@ -104,7 +138,7 @@
   max-width: 45vw;
   overflow: hidden;
   white-space: nowrap;
-  font-family: 'locationFont';
+  font-family: "locationFont";
 }
 
 .location-text {
