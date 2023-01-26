@@ -22,6 +22,34 @@
   height: 100%;
 }
 
+#page-container{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+}
+
+.fa {
+  padding: 0.5vw;
+  font-size: 50vw;
+  position: fixed;
+  z-index: 5;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  bottom: 5%;
+  right: 12%;
+  border: 3px solid red;
+}
+
+.fa-instagram {
+  background: white;
+  color: red;
+}
+
 @media only screen and (max-width: 600px) {
   #container {
     display: grid;
@@ -37,6 +65,24 @@
     width: 80%;
     height: 100%;
   }
+
+  .fa {
+    padding: 2vw;
+    font-size: 5vw;
+    position: fixed;
+    z-index: 5;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    bottom: 5%;
+    right: 12%;
+    border: 2px solid red;
+  }
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
 }
 
 #container-overlay {
@@ -68,6 +114,7 @@
   height: 100%;
   left: 0;
   top: 0;
+  z-index: 2;
 }
 
 #right-container {
@@ -78,6 +125,7 @@
   right: 0;
   top: 0;
   align-items: center;
+  z-index: 2;
 }
 
 #focus-view {
@@ -132,6 +180,25 @@
   overflow: hidden;
 }
 
+@media only screen and (max-width: 600px) {
+  #detail-container {
+    display: block;
+    max-width: 70vw;
+    max-height: 70vw;
+    width: auto;
+    height: auto;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("content/muster.svg");
+    overflow: hidden;
+  }
+}
+
+
+
 #location-name {
   background-color: black;
   color: white;
@@ -139,6 +206,17 @@
   overflow: hidden;
   white-space: nowrap;
   font-family: "locationFont";
+}
+
+@media only screen and (max-width: 600px) {
+  #location-name {
+    background-color: black;
+    color: white;
+    max-width: 70vw;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: "locationFont";
+  }
 }
 
 .location-text {

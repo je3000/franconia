@@ -8,22 +8,29 @@
     <script src="index.js"></script>
     <script src="names.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-    <div id="container-overlay"></div>
-    <div id="container"></div>
-    <div id="focus-view">
-      <div id="location-name">
-        <div class="location-text"></div>
+    <div id="page-container">
+      <div id="container-overlay"></div>
+      <div id="container"></div>
+      <!-- <a href="https://instagram.com/seidlaboy" class="fa fa-instagram"></a> -->
+      <div id="focus-view">
+        <div id="location-name">
+          <div class="location-text"></div>
+        </div>
+        <div id="detail-container">
+          <img id="focus-image" />
+        </div>
+        <div id="location-name">
+          <div class="location-text"></div>
+        </div>
       </div>
-      <div id="detail-container">
-        <img id="focus-image" />
-      </div>
-      <div id="location-name">
-        <div class="location-text"></div>
-      </div>
+      <div id="left-container" oncontextmenu="return false;"></div>
+      <div id="right-container" oncontextmenu="return false;"></div>
     </div>
-    <div id="left-container"></div>
-    <div id="right-container"></div>
   </body>
 </html>

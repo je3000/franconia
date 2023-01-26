@@ -8,6 +8,27 @@ function addGif(containerElement, gifFileSource) {
 }
 
 window.onload = function () {
+  let hasTouchScreen = false;
+
+  if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+  } else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+  } else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+      hasTouchScreen = !!mQ.matches;
+    } else if ("orientation" in window) {
+      hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+      // Only as a last resort, fall back to user agent sniffing
+      var UA = navigator.userAgent;
+      hasTouchScreen =
+        /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+        /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA);
+    }
+  }
+
   // Get the container element where the images will be displayed
   const container = document.getElementById("container");
 
@@ -47,9 +68,15 @@ window.onload = function () {
     .getElementById("focus-view")
     .addEventListener("click", function (event) {
       this.style.display = "none";
-      const containerOverlay = document.getElementById("container-overlay")
-      containerOverlay.style.display = "none"
+      const containerOverlay = document.getElementById("container-overlay");
+      containerOverlay.style.display = "none";
     });
+
+  var clickEvent = (function () {
+    if ("ontouchstart" in document.documentElement === true)
+      return "touchend";
+    else return "click";
+  })();
 
   for (let i = 0; i < imageList.length; i++) {
     const location_name = imageList[i];
@@ -59,18 +86,17 @@ window.onload = function () {
     gridItem.appendChild(imageElement);
     gridItem.className = "grid-item";
 
-    gridItem.addEventListener("click", (event) => {
+    gridItem.addEventListener(clickEvent, (event) => {
       const focusView = document.getElementById("focus-view");
       const focusImg = document.getElementById("focus-image");
       const movingText = document.getElementsByClassName("location-text");
-      const containerOverlay = document.getElementById("container-overlay")
+      const containerOverlay = document.getElementById("container-overlay");
       focusView.style.display = "flex";
       focusImg.src = imageElement.src;
       for (let movingTextObj of movingText) {
         movingTextObj.innerHTML = (location_name + "  ").repeat(100);
       }
-      containerOverlay.style.display = "block"
-
+      containerOverlay.style.display = "block";
     });
 
     gridItem.addEventListener("mouseenter", (event) => {
