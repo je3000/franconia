@@ -74,7 +74,7 @@ window.onload = function () {
 
   var clickEvent = (function () {
     if ("ontouchstart" in document.documentElement === true)
-      return "touchend";
+      return "touch";
     else return "click";
   })();
 
